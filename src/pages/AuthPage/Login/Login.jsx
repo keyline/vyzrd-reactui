@@ -41,32 +41,35 @@ export default function LoginForm() {
   return (
     <AuthLayouts>
     <section className="flex items-center justify-center">
-      <div className="">
+      <div className="login_box">
 
-        <h1 className="text-3xl font-bold text-center text-amber-50 ">
+        <h1 className="login_heading">
           Login for registered users
         </h1>
 
-        <h2 className="text-lg text-center text-amber-50 mt-2 mb-6">
+        <h2 className="not_registered">
           Not registered?{" "}
           <a
             href="https://uat.vyzrd.com/contact"
             target="_blank"
             rel="noreferrer"
-            className="text-orange-500"
+            className=""
           >
             Contact Us
           </a>
         </h2>
 
-        <form className="space-y-3 bg-white shadow-xl rounded-lg p-10 w-[420px] ">
+        <form className="login_form">
 
           <Input
             placeholder="Organisation ID"
             value={userid}
             onChange={(e) => setUserid(e.target.value)}
             error={errors.userid}
+            onClick={null}
+            label='test2'
           />
+          
 
           <Input
             
@@ -84,13 +87,13 @@ export default function LoginForm() {
             error={errors.password}
           />
 
-          <div className="flex justify-between items-center pt-3">
+          <div className="flex flex-wrap justify-start items-center pt-3">
             <Button
               text="Proceed"
               onClick={handleProceed}
             />
 
-            <Link to="/forgotpassword" className="text-blue-600 text-sm">
+            <Link to="/forgotpassword" className="forgot_password_link">
               Forgot password
             </Link>
           </div>

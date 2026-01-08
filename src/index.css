@@ -1,8 +1,182 @@
 @import "tailwindcss";
+@font-face {
+  font-family: 'futuraFont';
+  src: url(../src/assets/fonts/Futura-Medium.woff) format('woff');
+}
 body {
-  background-image: url('../src/assets/bg-login.png');
+  background-image: url('../src/assets/Images/bg-login.png');
   background-size: cover;
-  background-position: center;
+  background-position: center 0%;
   background-repeat: no-repeat;
   min-height: 100vh;
+  width: 100%;
+}
+.logo.login_apptop {
+  padding: 40px 0 0 40px;
+}
+.logo.login_apptop img {
+  max-width: 150px;
+}
+.login_box{
+  max-width: 700px;
+  width: 100%;
+  text-align: center;
+  margin-top: 40px
+}
+.login_heading{
+  font-family: 'futuraFont', sans-serif;
+  font-size: 34px;
+  color: #fff;
+  letter-spacing: 3px;
+  margin: 0 0 19px 0;
+  font-weight: 600;
+}
+.not_registered{
+  font-family: 'futuraFont', sans-serif;
+  font-size: 21px;
+  color: #fff;
+  letter-spacing: 3px;
+  margin: 0 0 36px 0;
+  font-weight: 600;
+}
+.not_registered a{
+  color: #ebb350 !important;
+  text-decoration: none;
+}
+.not_registered a:hover{
+  text-decoration: underline;
+}
+.login_form{
+  background: url(../src/assets/Images/log-logo-bg.jpg) no-repeat right top #fff;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 36px 30px;
+  max-width: 438px;
+}
+.login_input{
+  line-height: 1;
+}
+.login_input::placeholder {
+  color: #495057;
+  font-size: 14px;
+  font-family: 'futuraFont', sans-serif;
+  line-height: 1;
+}
+.form_error{
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  font-family: 'futuraFont', sans-serif;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1;
+}
+.formPassword {
+  border: solid #000;
+  background: none;
+  border-width: 0 0 1px 0;
+  box-sizing: border-box;
+  padding-bottom: 15px;
+  margin-bottom: 15px !important;
+  font-family: futuraFont;
+  font-size: 18px;
+  color: #424242;
+  font-weight: normal;
+  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+}
+.login_btn{
+  background: #ebb350;
+  box-sizing: border-box;
+  padding: 14px 30px;
+  border: 0;
+  font-family: futuraFont;
+  font-size: 14px;
+  color: #010101 !important;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  text-decoration: none !important;
+  line-height: 15px;
+  position: relative;
+  display: inline-block;
+  margin: 7px 7px 7px 0;
+  cursor: pointer;
+}
+.forgot_password_link{
+  margin-left: 30px;
+  font-family: 'futuraFont';
+  font-size: 16px;
+  color: #2d1ed8;
+  font-weight: 500;
+}
+.forgot_password_link:hover{
+  text-decoration: underline;
+}
+.forgot_password_link:active{
+  color: #fe0000;
+}
+.authenticate_box_form{
+  width: 100%;
+  max-width: 400px;
+  /* margin-top: 40px; */
+  background: url(../src/assets/Images/log-logo-bg.jpg) no-repeat right top #fff;
+  border-radius: 5px;
+}
+.otp_box{
+  padding: 40px 30px;
+  max-width: 438px;
+}
+.otp_box p{
+  line-height: 1.5;
+  font-family: 'futuraFont', sans-serif;
+}
+.disabled_btn{
+  box-sizing: border-box;
+  padding: 14px 30px;
+  border: 0;
+  font-family: futuraFont;
+  font-size: 14px;
+  color: #010101 !important;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  text-decoration: none !important;
+  line-height: 15px;
+  position: relative;
+  display: inline-block;
+  margin: 7px 7px 7px 0;
+  background: #cbc6be;
+  cursor: not-allowed;
+}
+
+/* responsive design start */
+@media (max-width: 768px) {
+  .logo.login_apptop {
+    padding: 20px 0 0 20px;
+  }
+  .login_heading {
+    font-size: 25px;
+    margin: 0 0 15px 0;
+  }
+  .not_registered {
+    font-size: 18px;
+    margin: 0 0 20px 0;
+  }
+  .login_form, .authenticate_box_form{
+    margin: 0 15px;
+  }
+}
+@media (max-width: 400px) {
+  .login_heading{
+    font-size: 20px;
+    padding: 0 10px;
+  }
+  .forgot_password_link{
+    margin-left: 0;
+    margin-top: 10px;
+  }
 }
