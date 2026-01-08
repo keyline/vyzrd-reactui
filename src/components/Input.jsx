@@ -2,7 +2,7 @@ import React from "react";
 
 function Input({ type = "text", value, onChange, error, placeholder }) {
   return (
-        <div className="mb-6">
+        <div className="d-flex align-items-center formPassword justify-content-between">
 
       {/* INPUT — NO UNDERLINE */}
       <input
@@ -14,14 +14,13 @@ function Input({ type = "text", value, onChange, error, placeholder }) {
           w-full
           bg-transparent
           outline-none
-          text-sm
-          pb-1
+          login_input
         "
       />
 
       {/* ERROR — UNDER INPUT */}
       {error && (
-        <p className="text-xs text-gray-500 mt-1">
+        <p className="form_error">
           {error}
         </p>
       )}

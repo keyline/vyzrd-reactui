@@ -10,7 +10,7 @@ export default function OTPPage() {
   const [otp, setOtp] = useState("");
   const [error, setError] = useState("");
 
-  const [timeLeft, setTimeLeft] = useState(30);
+  const [timeLeft, setTimeLeft] = useState(60);
   const [resendDisabled, setResendDisabled] = useState(true);
   const [success, setSuccess] = useState("");
 
@@ -51,11 +51,11 @@ export default function OTPPage() {
 
   return (
     <AuthLayouts>
-    <section className=" flex items-center justify-center">
+    <section className="authenticate_box_form">
 
-      <div className="bg-white shadow-xl rounded-lg p-10 w-[420px]">
+      <div className="otp_box">
 
-        <p className="text-center font-semibold mb-4">
+        <p>
           Enter OTP received in your email id
         </p>
 
@@ -68,7 +68,7 @@ export default function OTPPage() {
             error={error}
           />
 
-          <div className="flex justify-center gap-4 pt-2">
+          <div className="flex justify-start gap-0 pt-2">
 
             <Button
               text="RESEND"
@@ -83,7 +83,7 @@ export default function OTPPage() {
 
           </div>
 
-          <p className="text-xs mt-3">
+          <p className="text-[12px] mt-3">
             Time remaining:{" "}
             {String(Math.floor(timeLeft / 60)).padStart(2, "0")}:
             {String(timeLeft % 60).padStart(2, "0")}
