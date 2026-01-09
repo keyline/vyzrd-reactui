@@ -4,6 +4,8 @@ import Button from "../../../components/Button";
 import { Link, useNavigate } from "react-router-dom";
 import { RoutePath } from "../../../routes/RoutesConfig";
 import AuthLayouts from "../../../layouts/AuthLayouts";
+import { useDispatch, useSelector } from "react-redux";
+import { onLogin } from "../../../features/auth/authSlice";
 
 
 export default function LoginForm() {
@@ -15,6 +17,8 @@ export default function LoginForm() {
   const [success, setSuccess] = useState("");
 
   const navigate=useNavigate()
+  const dispatch=useDispatch()
+  const {isLoading}=useSelector((state) => state.auth);
 
   const validate = () => {
     let temp = {};
@@ -28,14 +32,36 @@ export default function LoginForm() {
     return Object.keys(temp).length === 0;
   };
 
-  const handleProceed = (e) => {
-    e.preventDefault();
-
+  const handleProceed = async () => {
+    setErrors({});
     setSuccess("");
+    if (!validate()) return
 
-    if (!validate()) return;
+    var data={
+      email:email,
+      userid:userid,
+      password:password
+    }
+    
+    const res=await dispatch(onLogin(data))
+      if (onLogin.rejected.match(res)) {
+        
+        
+      setErrors((err) => ({
+        ...err,
+        apiErr: res.payload,
 
-    navigate(RoutePath.OTP_VERIFY);
+      }));
+      
+      return;
+    }
+
+    
+    setSuccess(res.payload.message);
+
+    // navigate to OTP page
+    navigate(RoutePath.VERIFY_OTP);
+    
   };
 
   return (
@@ -59,7 +85,7 @@ export default function LoginForm() {
           </a>
         </h2>
 
-        <form className="login_form">
+        <div className="login_form">
 
           <Input
             placeholder="Organisation ID"
@@ -72,7 +98,7 @@ export default function LoginForm() {
           
 
           <Input
-            
+            type="email"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -86,9 +112,21 @@ export default function LoginForm() {
             onChange={(e) => setPassword(e.target.value)}
             error={errors.password}
           />
+          {errors.apiErr && (
+              <p className="text-red-500 text-sm pt-2">
+                {errors.apiErr}
+              </p>
+            )}
+
+            {success && (
+              <p className="text-green-600 text-sm pt-2">
+                {success}
+              </p>
+            )}
 
           <div className="flex flex-wrap justify-start items-center pt-3">
             <Button
+              type="button"
               text="Proceed"
               onClick={handleProceed}
             />
@@ -97,13 +135,7 @@ export default function LoginForm() {
               Forgot password
             </Link>
           </div>
-
-          {success && (
-            <p className="text-green-600 text-sm text-center pt-2">
-              {success}
-            </p>
-          )}
-        </form>
+        </div>
       </div>
     </section>
     </AuthLayouts>

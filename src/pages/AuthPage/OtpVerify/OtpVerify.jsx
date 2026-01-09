@@ -4,6 +4,8 @@ import Button from "../../../components/Button";
 import { useNavigate } from "react-router-dom";
 import { RoutePath } from "../../../routes/RoutesConfig";
 import AuthLayouts from "../../../layouts/AuthLayouts";
+import { useDispatch, useSelector } from "react-redux";
+import { onOTPVerify } from "../../../features/auth/authSlice";
 
 
 export default function OTPPage() {
@@ -15,6 +17,18 @@ export default function OTPPage() {
   const [success, setSuccess] = useState("");
 
   const navigate=useNavigate()
+  const dispatch = useDispatch();
+
+const { otpPayload, isLoading } = useSelector(
+  (state) => state.auth
+);
+
+useEffect(() => {
+  if (!otpPayload) {
+    navigate(RoutePath.LOGIN);
+  }
+}, [otpPayload, navigate]);
+
 
   // Timer logic
   useEffect(() => {
@@ -28,24 +42,48 @@ export default function OTPPage() {
     return () => clearTimeout(timer);
   }, [timeLeft]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSuccess("");
+  
 
-    if (!otp.trim()) {
-      setError("This field is required.");
-      return;
-    }
+  const handleSubmit = async () => {
+  
+  setError("");
+  setSuccess("");
 
-    setError("");
-    navigate(RoutePath.HOME)
+  if (!otp.trim()) {
+    setError("This field is required.");
+    return;
+  }
+
+  if (!otpPayload) {
+    setError("Session expired. Please login again.");
+    navigate(RoutePath.LOGIN);
+    return;
+  }
+
+  const payload = {
+    otp,
+    email: otpPayload.email,
+    userid: otpPayload.userid,
+    password: otpPayload.password, //  PLAIN PASSWORD
   };
+
+  const res = await dispatch(onOTPVerify(payload));
+
+  if (onOTPVerify.rejected.match(res)) {
+    setError(res.payload || "Invalid OTP");
+    return;
+  }
+
+  setSuccess(res.payload.message);
+  navigate(RoutePath.HOME);
+};
+
 
   const handleResend = () => {
     setOtp("");
     setError("");
     setSuccess("");
-    setTimeLeft(30);
+    setTimeLeft(60);
     setResendDisabled(true);
   };
 
@@ -59,24 +97,29 @@ export default function OTPPage() {
           Enter OTP received in your email id
         </p>
 
-        <form className="space-y-3">
+        <div className="space-y-3">
 
           <Input
             value={otp}
             onChange={(e) => setOtp(e.target.value)}
             
-            error={error}
+            //error={error}
           />
+
+          {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+
 
           <div className="flex justify-start gap-0 pt-2">
 
             <Button
+              type="button"
               text="RESEND"
               onClick={handleResend}
               disabled={resendDisabled}
             />
 
             <Button
+              type="button"
               text="SUBMIT"
               onClick={handleSubmit}
             />
@@ -94,7 +137,7 @@ export default function OTPPage() {
               {success}
             </p>
           )}
-        </form>
+        </div>
       </div>
     </section>
     </AuthLayouts>
