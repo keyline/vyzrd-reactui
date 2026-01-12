@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
 import { Link, useNavigate } from "react-router-dom";
@@ -18,7 +18,7 @@ export default function LoginForm() {
 
   const navigate=useNavigate()
   const dispatch=useDispatch()
-  const {isLoading}=useSelector((state) => state.auth);
+  const {isLoading,otpRequired}=useSelector((state) => state.auth);
 
   const validate = () => {
     let temp = {};
@@ -60,9 +60,14 @@ export default function LoginForm() {
     setSuccess(res.payload.message);
 
     // navigate to OTP page
-    navigate(RoutePath.VERIFY_OTP);
+    navigate(RoutePath.OTP_VERIFY);
     
   };
+//   useEffect(() => {
+//   if (otpRequired) {
+//     navigate(RoutePath.VERIFY_OTP);
+//   }
+// }, [otpRequired, navigate]);
 
   return (
     <AuthLayouts>
@@ -127,7 +132,7 @@ export default function LoginForm() {
           <div className="flex flex-wrap justify-start items-center pt-3">
             <Button
               type="button"
-              text="Proceed"
+              text={isLoading ? "Proceeding..." : "Proceed"}
               onClick={handleProceed}
             />
 

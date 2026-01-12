@@ -3,7 +3,7 @@ import { clearStorage, getToken } from "./storage";
 import { RoutePath } from "../routes/RoutesConfig";
 
 const api = axios.create({
-  baseURL: "http://127.0.0.1:8000/api",
+  baseURL: "https://developer1.vyzrd.com/api",
   headers: {
     Accept: "application/json",
   },

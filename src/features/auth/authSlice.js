@@ -2,8 +2,11 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import Apis from "../../services/apis";
 import {
   clearStorage,
+  getOtpPayload,
   getToken,
   getUser,
+  removeOtpPayload,
+  setOtpPayload,
   setToken,
   setUser,
 } from "../../services/storage";
@@ -59,20 +62,37 @@ export const onAppLoad = createAsyncThunk(
     try {
       const token = getToken();
       const user = getUser();
+      const otpPayload = getOtpPayload();
 
+      // ✅ Authenticated session
       if (token && user) {
         return {
           token,
           user,
           isAuthenticated: true,
+          otpPayload: null,
+          otpRequired: false,
         };
       }
 
-      // not logged in
+      // ✅ OTP flow restore
+      if (otpPayload) {
+        return {
+          token: null,
+          user: null,
+          isAuthenticated: false,
+          otpPayload,
+          otpRequired: true,
+        };
+      }
+
+      // ✅ Not logged in
       return {
         token: null,
         user: null,
         isAuthenticated: false,
+        otpPayload: null,
+        otpRequired: false,
       };
     } catch (error) {
       return rejectWithValue("Failed to restore session");
@@ -107,6 +127,9 @@ const authSlice = createSlice({
            state.isAuthenticated = false;
            state.isLoading = false;
            state.error = null;
+
+           state.otpPayload = null;
+           state.otpRequired = false;
 },
     },
    extraReducers: (builder) => {     
@@ -125,6 +148,10 @@ const authSlice = createSlice({
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isAuthenticated = action.payload.isAuthenticated;
+
+      // ✅ restore otp state
+      state.otpPayload = action.payload.otpPayload;
+      state.otpRequired = action.payload.otpRequired;
     })
     .addCase(onAppLoad.rejected, (state) => {
       state.isLoading = false;
@@ -148,6 +175,7 @@ const authSlice = createSlice({
         ...action.payload.data,
         password: action.meta.arg.password,
       };
+      setOtpPayload(state.otpPayload)
 })
 
     .addCase(onLogin.rejected, (state, action) => {
@@ -176,6 +204,8 @@ const authSlice = createSlice({
 
       state.otpRequired = false;
       state.otpPayload = null;
+
+      removeOtpPayload()
 })
 
     .addCase(onOTPVerify.rejected, (state, action) => {

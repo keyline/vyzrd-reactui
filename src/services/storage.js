@@ -2,6 +2,7 @@
 export const STORAGE_KEYS = {
     TOKEN: 'auth_token',
     USER: 'user_data',
+    OTP: "otp_payload",
 };
 
 export const setToken = (token) => {
@@ -44,4 +45,18 @@ export const removeUser = () => {
 
 export const clearStorage = () => {
     localStorage.clear();
+};
+
+
+export const setOtpPayload = (data) => {
+  localStorage.setItem(STORAGE_KEYS.OTP, JSON.stringify(data));
+};
+
+export const getOtpPayload = () => {
+  const data = localStorage.getItem(STORAGE_KEYS.OTP);
+  return data ? JSON.parse(data) : null;
+};
+
+export const removeOtpPayload = () => {
+  localStorage.removeItem(STORAGE_KEYS.OTP);
 };
