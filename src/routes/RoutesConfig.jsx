@@ -1,11 +1,18 @@
-import Home from "../pages/Home/Home"
+import Home from "../pages/Home/userDashboard/Home"
 import Login from "../pages/AuthPage/Login/Login"
 import OtpVerify from "../pages/AuthPage/OtpVerify/OtpVerify"
+import ESGEffectiveness from "../pages/Home/middelPage/ESGEffectiveness"
+import ClimateRisk from "../pages/Home/middelPage/ClimateRisk"
+import NextLD from "../pages/Home/middelPage/NextLD"
 
 export const RoutePath = {
     LOGIN: '/',
-    HOME: '/home',
+    HOME: '/userDashboard',
     OTP_VERIFY: '/otpverify',
+
+    ESG: "/userDashboard/parentVerticalTab1",
+    CLIMATE: "/userDashboard/parentVerticalTab2",
+    NEXT: "/userDashboard/parentVerticalTab3",
    
 }
 
@@ -25,7 +32,25 @@ const routes=[{
   path:RoutePath.HOME,
   element:<Home/>,
   authRequired:false,
-  title:"Home"
+  title:"Home",
+  children: [
+      {
+        index: true, // ✅ default page when /userDashboard opens
+        element: <ESGEffectiveness />,
+      },
+      {
+        path: "parentVerticalTab1",
+        element: <ESGEffectiveness />,
+      },
+      {
+        path: "parentVerticalTab2",
+        element: <ClimateRisk />,
+      },
+      {
+        path: "parentVerticalTab3",
+        element: <NextLD />,
+      },
+    ],
 }]
 
 export default routes
