@@ -1,0 +1,130 @@
+/* card css */
+.flip-card {
+  position: relative;
+  width: 100%;
+  min-height: 190px;
+  perspective: 500px;
+  -webkit-perspective: 500px;
+  -moz-perspective: 500px;
+  -o-perspective: 500px;
+  margin-top: 83px;
+}
+.flip-content {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+}
+.flip-content .front, .flip-content .back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-perspective: 0;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  visibility: visible;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  font-size: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flip-content .dm-card-item {
+  padding: 90px 30px 50px 30px;
+}
+.dm-card-item.active {
+  background: #42764e;
+}
+.dm-card-item {
+  background: #c5c5c5;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 30px;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+.vyrProduct-logo {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  -o-transform: translate(-50%, 0);
+  width: 110px;
+  height: 110px;
+  border-radius: 100%;
+  border: 8px solid #155230;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  overflow: hidden;
+  box-shadow: 0px 4px 8px 1px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 4px 8px 1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 4px 8px 1px rgba(0, 0, 0, 0.5);
+}
+.vyrProduct-logo::before {
+  position: absolute;
+  content: "";
+  border: 5px solid #eeb647;
+  width: 82px;
+  height: 82px;
+  border-radius: 100%;
+}
+.vyrProduct-logo>img {
+  display: block;
+}
+.dm-card-item span {
+  font-size: 20px;
+  justify-content: center;
+  color: #fffefb;
+  font-family: futuraFont;
+  font-weight: normal;
+  border-bottom: 1px solid #fff;
+  padding: 0 20px 20px 20px;
+  margin-bottom: 20px;
+}
+.dm-card-item span>small {
+  /* position: relative; */
+  font-family: 'Roboto', sans-serif;
+  font-size: 22px;
+}
+span.vyrScript {
+  font-family: 'Dancing Script', cursive !important;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+.dm-card-item span sup {
+  font-size: 13px;
+}
+.dm-card-item .bottom-text {
+  font-size: 14px;
+  /* padding-left: 20px; */
+  color: #fffefb;
+  font-family: 'futuraFont', sans-serif;
+  font-weight: normal;
+  text-align: center;
+  min-height: 40px;
+}
+.dm-card-item.active:hover {
+  background: #42764e;
+  box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.3);
+}

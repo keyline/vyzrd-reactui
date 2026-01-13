@@ -1,0 +1,232 @@
+.fixedHeader {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+    box-sizing: border-box;
+    padding: 0;
+}
+.vyrSickhead {
+    padding: 34px 15px;
+    transition: all 0.2s ease-in-out;
+    background: url(../src/assets/Images/header-bg.jpg) no-repeat center top;
+    background-size: auto;
+    transition: 0.2s;
+}
+.header-logo {
+    width: 190px;
+}
+.header-logo>a, .header-logo>a>img {
+    width: 100%;
+    display: inline-block;
+}
+.header-logo>a>img {
+    transition: width 0.5s;
+    -webkit-transition: width 0.5s;
+    -moz-transition: width 0.5s;
+    -o-transition: width 0.5s;
+}
+.topbar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    padding: 0;
+}
+.topbar .dropdown {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    position: relative;
+}
+.topbar .topbar-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.btn-group-lg>.btn, .btn-lg {
+    padding: .5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: .3rem;
+}
+.dropdown-inline {
+    display: inline-block;
+}
+.ml-2, .mx-2 {
+    margin-left: 0.5rem !important;
+}
+.dm-dropdown {
+    position: relative;
+    display: inline-block;
+}
+.topbar-item .user-name {
+    font-family: 'futuraFont', sans-serif;
+    font-size: 20px;
+    color: #fff;
+    font-weight: 500;
+    align-items: flex-end;
+    display: flex;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    text-decoration: none;
+}
+.topbar-item .user-name svg {
+    font-size: 12px;
+    color: #98eb07;
+    margin-left: 8px;
+    margin-bottom: 5px;
+}
+.dm-dropdown-content {
+    display: none;
+    position: absolute;
+    background: #fff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+    overflow: hidden;
+    right: 0;
+    box-sizing: border-box;
+    padding: 10px 12px;
+}
+.dm-dropdown-content a{
+    color: black;
+    padding: 8px 0;
+    text-decoration: none;
+    display: block;
+    font-family: futuraFont;
+    border-bottom: 1px solid #b1b1b1;
+    font-size: 13px;
+    border-bottom: 1px solid #b1b1b1;
+}
+.dm-dropdown-content a:last-child {
+    border: 0;
+}
+.dm-dropbtn {
+    background: none;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    display: inline-block;
+}
+.dm-dropbtn.vyz-user-circle>svg {
+    font-size: 30px;
+    color: #fff !important;
+}
+.dm-dropdown-content.vyzrd-dropdow {
+    top: 50px;
+}
+.dm-dropdown:hover .dm-dropdown-content {
+    display: block;
+}
+.subheader {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background: #fff;
+}
+ul.dm-breadcrumb {
+    padding: 4px 0;
+    list-style: none;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+ul.dm-breadcrumb li {
+    display: inline;
+    font-size: 18px;
+}
+ul.dm-breadcrumb li a {
+    color: #a4a3a3;
+    text-decoration: none;
+    font-family: futuraFont;
+    font-weight: normal;
+    font-size: 15px;
+    white-space: nowrap;
+}
+ul.dm-breadcrumb li a:hover, ul.dm-breadcrumb li a.active {
+    color: #1a0dab;
+}
+.dm-progressbar {
+    background: #f5d48d;
+}
+.dm-progressbar .dm-left {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.dm-progressbar .dm-left span {
+    color: #000;
+    font-family: 'futuraFont', sans-serif;
+    font-weight: normal;
+    font-size: 20px;
+    position: relative;
+    padding-right: 20px;
+}
+.dm-right span {
+    color: #000;
+    font-family: 'futuraFont', sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+    margin-left: 10px;
+    white-space: nowrap;
+}
+.vyrSickhead.stickHead {
+    padding: 10px 15px;
+}
+.vyrSickhead.stickHead .header-logo>a>img {
+    width: 100px;
+    /* transition: all 0.2s ease-in-out; */
+}
+.vyrSickhead.stickHead .user-name,
+.dm-dropbtn {
+    font-size: 15px;
+    padding: 9px 16px;
+}
+.vyrSickhead.stickHead .dm-dropdown-content.vyzrd-dropdow {
+    top: 47px;
+}
+
+
+
+@media(max-width: 991px){
+    .dm-progressbar .dm-left span {
+        font-size: 16px;
+        padding-right: 0;
+    }
+    .dm-progressbar .dm-left,
+    .dm-right {
+        text-align: center;
+        width: 100% !important;
+        justify-content: center;
+    }
+    .dm-progressbar .dm-left{
+        padding-bottom: 0;
+    }
+    .dm-right{
+        padding-bottom: 8px;
+    }
+    
+}
+@media(max-width: 575px){
+    .dm-progressbar .dm-left span {
+        font-size: 14px;
+    }
+}
