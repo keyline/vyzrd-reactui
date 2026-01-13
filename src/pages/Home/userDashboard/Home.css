@@ -1,0 +1,115 @@
+.tabs-container {
+  width: 100%;
+}
+
+/* -------- Desktop Layout -------- */
+.tabs-desktop {
+  display: flex;
+  /* border: 2px solid #2f6b3f; */
+  min-height: 400px;
+}
+
+.tab-list {
+  width: 260px;
+  padding-top: 40px;
+}
+
+.tab-button {
+  width: 100%;
+  border: none;
+  /* border-bottom: 1px solid #2f6b3f; */
+  background: #eee;
+  text-align: left;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  /* right: -2px; */
+}
+.tab-button a{
+    position: relative;
+    z-index: 1;
+    margin-right: -2px !important;
+    padding: 14px 15px 15px 14px !important;
+    border-top: 1px solid;
+    border: 2px solid #d3d3d3 !important;
+    margin-bottom: 4px !important;
+    border-right: 1px #f2f2f2 solid !important;
+    border-radius: 4px 0 0 4px;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    font-size: 13px;
+    color: #000;
+    font-family: 'futuraFont', sans-serif;
+    background: #e3e3e3;
+    font-weight: 600;
+}
+.tab-button.active a{
+  background: white;
+  font-weight: bold;
+  width: 101%;
+  border: 2px solid #42764e !important;
+  border-right: 1px #FFF solid !important;
+}
+
+.tab-content {
+  flex: 1;
+  padding: 15px 15px;
+  border: 2px solid #42764e;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+
+/* -------- Mobile Layout -------- */
+.tabs-mobile {
+  display: none;
+}
+
+.accordion-item {
+  border: 1px solid #ccc;
+  margin-bottom: 8px;
+}
+
+.accordion-header {
+  width: 100%;
+  padding: 16px;
+  background: #eee;
+  border: none;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tabs-mobile  .accordion-content {
+  padding: 20px;
+  background: #fff;
+  border-top: 0;
+}
+.tabs-mobile .accordion-item > *{
+    border: 1px solid #42764e;
+}
+
+/* -------- Responsive -------- */
+@media(max-width: 1199px){
+    .flip-content .dm-card-item {
+        padding: 90px 15px 20px 15px;
+    }
+    .dm-card-item span{
+        padding: 0 0 20px;
+    }
+}
+@media (max-width: 768px) {
+  .tabs-desktop {
+    display: none;
+  }
+
+  .tabs-mobile {
+    display: block;
+  }
+
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}

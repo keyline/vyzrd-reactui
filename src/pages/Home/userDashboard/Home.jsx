@@ -1,48 +1,124 @@
 
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { RoutePath } from '../../../routes/RoutesConfig';
+import Card from '../../../components/Card';
+import DasboardLayouts from '../../../layouts/DasboardLayouts';
+import './Home.css'
+import { useEffect, useState } from "react";
+import ESGEffectiveness from '../middelPage/ESGEffectiveness';
+import ClimateRisk from '../middelPage/ClimateRisk';
+import NextLD from '../middelPage/NextLD';
+import CopyrightModal from '../../../components/CopyrightModal ';
+
+
 
 function Home() {
-   const linkClass = ({ isActive }) =>
-    `w-full block text-left px-4 py-3 rounded-md mb-2 font-medium
-     ${isActive ? "bg-gray-100 border border-gray-300" : "bg-white hover:bg-gray-50"}`;
+  const [showCopyright, setShowCopyright] = useState(false);
+  useEffect(() => {
+  const accepted = localStorage.getItem("copyrightAccepted");
+  if (!accepted) {
+    setShowCopyright(true);
+  }
+}, []);
+const navigat= useNavigate()
+
+const handleAccept = () => {
+  localStorage.setItem("copyrightAccepted", "true");
+  setShowCopyright(false);
+};
+
+const handleReject = () => {
+  // Optional: redirect or logout
+  // setShowCopyright(false);
+  navigat('/')
+};
+
+
+  const tabs = [
+  {
+    id: "esg",
+    title: "ESG Effectiveness",
+    content: <ESGEffectiveness />,
+    path: RoutePath.ESG
+  },
+  {
+    id: "climate",
+    title: "Climate Risk & Net Zero Management",
+    content: <ClimateRisk />,
+    path: RoutePath.CLIMATE
+  },
+  {
+    id: "lnd",
+    title: "Next - L&D",
+    content: <NextLD />,
+    path: RoutePath.NEXT
+  }
+];
+  //  const linkClassName = ({ isActive }) =>
+  //   `w-full block text-left px-4 py-3 rounded-md mb-2 font-medium
+  //    ${isActive ? "bg-gray-100 border border-gray-300" : "bg-white hover:bg-gray-50"}`;
+  const [activeTab, setActiveTab] = useState("esg");
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      {/* <div className="bg-yellow-200 px-6 py-3 flex justify-between items-center">
-        <h1 className="font-semibold text-lg">
-          Test for Lite and pro for Deblina June 2024 | India
-        </h1>
-        <p className="text-sm font-medium">
-          Last Login: 12-Jan-2026, 10:38:50 (GMT)
-        </p>
-      </div> */}
+    <>
+    <CopyrightModal
+    show={showCopyright}
+    onAccept={handleAccept}
+    onReject={handleReject}
+  />
+ <DasboardLayouts> 
+    <div className="min-h-screen">
+      <div className="container">
+        <div className="row mt-5">
+          <div className="col-12 mb-5">
+              <div className="tabs-container">
+                {/* Desktop Tabs */}
+                <div className="tabs-desktop">
+                  <div className="tab-list">
+                    {tabs.map(tab => (
+                      <button
+                        key={tab.id}
+                        className={`tab-button ${activeTab === tab.id ? "active" : ""}`}
+                        onClick={() => setActiveTab(tab.id)}>
+                        <NavLink to={tab.path}>
+                          {tab.title}
+                        </NavLink>
+                      </button>
+                    ))}
+                  </div>
 
-      <div className="flex">
-        {/* Sidebar */}
-        <div className="w-[280px] border-r bg-white min-h-[calc(100vh-56px)] p-4">
-          <p className="font-semibold mb-4 text-gray-700">Menu</p>
+                  <div className="tab-content">
+                    {tabs.find(tab => tab.id === activeTab)?.content}
+                  </div>
+                </div>
 
-          <NavLink to={RoutePath.ESG} className={linkClass}>
-            ESG Effectiveness
-          </NavLink>
+                {/* Mobile Accordion */}
+                <div className="tabs-mobile">
+                  {tabs.map(tab => (
+                    <div key={tab.id} className="accordion-item">
+                      <button
+                        className="accordion-header"
+                        onClick={() =>
+                          setActiveTab(activeTab === tab.id ? "" : tab.id)
+                        }>
+                        {tab.title}
+                        <span>{activeTab === tab.id ? "▲" : "▼"}</span>
+                      </button>
 
-          <NavLink to={RoutePath.CLIMATE} className={linkClass}>
-            Climate Risk & Net Zero Management
-          </NavLink>
-
-          <NavLink to={RoutePath.NEXT} className={linkClass}>
-            Next - L&D
-          </NavLink>
-        </div>
-
-        {/* Middle Content */}
-        <div className="flex-1 p-10">
-          <Outlet />
+                      {activeTab === tab.id && (
+                        <div className="accordion-content">{tab.content}</div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+          </div>
         </div>
       </div>
     </div>
+    </DasboardLayouts>
+    
+    </>
   );
 }
 
