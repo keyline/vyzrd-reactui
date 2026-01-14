@@ -119,6 +119,7 @@ body {
   font-size: 16px;
   color: #2d1ed8;
   font-weight: 500;
+  text-decoration: none;
 }
 .forgot_password_link:hover{
   text-decoration: underline;
