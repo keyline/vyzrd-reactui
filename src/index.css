@@ -29,7 +29,7 @@ body {
   max-width: 700px;
   width: 100%;
   text-align: center;
-  margin-top: 40px
+  /* margin-top: 40px */
 }
 .login_heading{
   font-family: 'futuraFont', sans-serif;
@@ -84,10 +84,10 @@ body {
   background: none;
   border-width: 0 0 1px 0;
   box-sizing: border-box;
-  padding-bottom: 15px;
-  margin-bottom: 15px !important;
-  font-family: futuraFont;
-  font-size: 18px;
+  padding-bottom: 10px;
+  margin-bottom: 10px !important;
+  font-family: 'futuraFont';
+  font-size: 15px;
   color: #424242;
   font-weight: normal;
   justify-content: space-between;
@@ -141,6 +141,7 @@ body {
 .otp_box p{
   line-height: 1.5;
   font-family: 'futuraFont', sans-serif;
+  margin-bottom: 0;
 }
 .disabled_btn{
   box-sizing: border-box;
@@ -221,6 +222,10 @@ body {
   padding-top: 228px;
   background: #f2f2f2;
 }
+.container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+  max-width: 1340px !important;
+  padding: 0 15px !important;
+}
 /* responsive design start */
 @media (max-width: 768px) {
   .logo.login_apptop {
@@ -248,4 +253,3 @@ body {
     margin-top: 10px;
   }
 }
-

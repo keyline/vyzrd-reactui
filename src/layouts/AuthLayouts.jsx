@@ -9,7 +9,7 @@ export default function AuthLayouts({ children }) {
       <Header />
 
       {/* Center content */}
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="flex items-center justify-center">
         {children}
       </div>
 

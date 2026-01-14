@@ -6,7 +6,7 @@ import { logo } from '../utils/ImagePath'
 
 function Header() {
   return (
-    <header className="fixed top-0 left-0 w-full">
+    <header className="w-full">
       <div className="logo login_apptop">
         <img
           src={logo}
