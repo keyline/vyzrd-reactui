@@ -17,7 +17,7 @@ function ClimateRisk() {
   ]
   return (
     <>
-    <div className="row">
+    <div className="row justify-content-center ">
           {Product.map((item, index) => (
                 <div className="col-lg-4 col-md-12" key={index}><Card product={item.product} card_logo={item.card_logo} subtitle={item.subtitle} title={item.title} tm={item.tm} /></div>
               ))}

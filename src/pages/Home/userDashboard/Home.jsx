@@ -23,7 +23,7 @@ function Home() {
 const navigat= useNavigate()
 
 const handleAccept = () => {
-  localStorage.setItem("copyrightAccepted", "true");
+  // localStorage.setItem("copyrightAccepted", "true");
   setShowCopyright(false);
 };
 

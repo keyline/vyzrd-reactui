@@ -21,31 +21,26 @@ const CopyrightModal = ({ show, onAccept, onReject }) => {
 
             {/* Body */}
             <div className="modal-body px-4 pb-4">
-              <p>
-                All the content (including but not limited to design, images,
-                text, information, etc.) on this platform is copyrighted
-                material that is owned by Vyzrd Pty Ltd (“Vyzrd”).
+              <p>All the content (including but not limited to design, images, text, information, etc.) on this platform is copyrighted material that is owned by Vyzrd Pty Ltd (“Vyzrd”). Unauthorized use or reproduction of this material is strictly prohibited by law.
                 <br /><br />
 
-                Copying any copyrighted material from this platform without
-                obtaining prior written consent from Vyzrd is prohibited and
-                may result in legal action being taken against you.
+                Copying any copyrighted material from this platform without obtaining prior written consent from Vyzrd is prohibited and may result in legal action being taken against you.
                 <br /><br />
 
                 <strong>
-                  Vyzrd takes copyright infringement very seriously and will
-                  actively pursue legal action against any party found to be
-                  in violation of our intellectual property rights.
+                 Vyzrd takes copyright infringement very seriously and will actively pursue legal action against any party found to be in violation of our intellectual property rights.
                 </strong>
                 <br /><br />
 
-                By continuing to use the platform, you agree to comply with
-                our copyright policies.
+                Please respect our intellectual property rights and do not copy, reproduce, or distribute any of our copyrighted material.
                 <br /><br />
-
+                By continuing to use the platform, you agree to comply with our copyright policies and acknowledge that any unauthorized use of our copyrighted material may result in legal action being taken against you and/or your organisation.
+                <br /><br />
                 For questions, contact <strong>contact@vyzrd.com</strong>
                 <br /><br />
 
+                For any questions related to this notice, please get in touch with your Vyzrd sales representative or email us at contact@vyzrd.com . Thank you for your understanding and cooperation.
+                <br /><br />
                 <strong>Vyzrd Pty Ltd</strong>
               </p>
 

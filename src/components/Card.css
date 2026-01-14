@@ -128,3 +128,6 @@ span.vyrScript {
   -moz-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.3);
 }
+.deactivated{
+  background: #c5c5c5;
+}
