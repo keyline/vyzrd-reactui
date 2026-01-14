@@ -9,7 +9,7 @@
 .vyrSickhead {
     padding: 34px 15px;
     transition: all 0.2s ease-in-out;
-    background: url(../src/assets/Images/header-bg.jpg) no-repeat center top;
+    background: url(../../public/Image/header-bg.jpg) no-repeat center top;
     background-size: auto;
     transition: 0.2s;
 }
