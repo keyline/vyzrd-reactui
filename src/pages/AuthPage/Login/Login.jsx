@@ -80,14 +80,14 @@ export default function LoginForm() {
 
         <h2 className="not_registered">
           Not registered?{" "}
-          <a
-            href="https://uat.vyzrd.com/contact"
-            target="_blank"
-            rel="noreferrer"
+          <Link
+            to=""
+            // target="_blank"
+            // rel="noreferrer"
             className=""
           >
             Contact Us
-          </a>
+          </Link>
         </h2>
 
         <div className="login_form">
@@ -136,7 +136,7 @@ export default function LoginForm() {
               onClick={handleProceed}
             />
 
-            <Link to="/forgotpassword" className="forgot_password_link">
+            <Link to="" className="forgot_password_link">
               Forgot password
             </Link>
           </div>

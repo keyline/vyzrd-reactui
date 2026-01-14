@@ -1,7 +1,7 @@
 import React from 'react'
-import { card_logo } from '../utils/ImagePath'
+// import { card_logo } from '../utils/ImagePath'
 import "./Card.css"
-function Card({product="Rapid ESG Risk Screening"}) {
+function Card({product="Rapid ESG Risk Screening",card_logo,subtitle,title,tm,extra_subtitle,status}) {
   return (
     <>
       <div class="flip-card" id="esg4dPrism">
@@ -11,7 +11,7 @@ function Card({product="Rapid ESG Risk Screening"}) {
                         <div class="vyrProduct-logo">
                             <img src={card_logo} alt="" />
                         </div>
-                        <span>E<small>$</small>G <span class="vyrScript">Prism </span><sup> ™</sup> <span class="vyrScript"> </span> </span>
+                        <span>{title}<span class="vyrScript">{extra_subtitle}</span> <sup> {tm}</sup> <span class="vyrScript">{subtitle} </span> <span class="vyrScript"> </span> </span>
                         <div class="bottom-text">{product} </div>
                     </a>
                 </div>
